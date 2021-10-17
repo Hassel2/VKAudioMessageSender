@@ -10,5 +10,6 @@
 5) На этом все.
 
 Инструкция по использованию:
+
 В терминале пишем:
 VKAudioMessageSender -p /path/to/audiofile -id 123456 (id получаетля)
