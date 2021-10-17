@@ -63,12 +63,12 @@ func main() {
 }
 
 func (app Application) FormatAudio() {
-	command := exec.Command("ffmpeg", "-i", app.path, "-ac", "1", "bassboost/output.mp3", "-y")
+	command := exec.Command("ffmpeg", "-i", app.path, "-ac", "1", "output.mp3", "-y")
 	err := command.Run()
 	if err != nil {
 		// app.errorLog.Fatalln(err)
 	}
-	command = exec.Command("ffmpeg", "-i", "bassboost/output.mp3", "-c:a", "libvorbis", "-q:a", "4", "bassboost/output.ogg", "-y")
+	command = exec.Command("ffmpeg", "-i", "output.mp3", "-c:a", "libvorbis", "-q:a", "4", "output.ogg", "-y")
 	err = command.Run()
 	if err != nil {
 		// app.errorLog.Fatalln(err)

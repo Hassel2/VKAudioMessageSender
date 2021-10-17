@@ -60,7 +60,7 @@ func (app Application) AudioUploader(uploadUrl string) (string) {
         app.infoLog.Println("Uploading audiomessage to server")
 
 	app.infoLog.Println("Opening audio file")
-	file, err := os.Open("bassboost/output.ogg")
+	file, err := os.Open("output.ogg")
 	if err != nil {
 		app.errorLog.Fatalln(err)
 	}
