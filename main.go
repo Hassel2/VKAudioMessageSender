@@ -60,18 +60,24 @@ func main() {
 	file := app.AudioUploader(uploadUrl)
 	fileId := app.AudioSaver(file)
 	app.MessageSender(fileId)
+	app.RemoveTmp()
 }
 
 func (app Application) FormatAudio() {
-	command := exec.Command("ffmpeg", "-i", app.path, "-ac", "1", "output.mp3", "-y")
+	command := exec.Command("ffmpeg", "-i", app.path, "-ac", "1", "/tmp/output.ogg", "-y")
 	err := command.Run()
 	if err != nil {
 		// app.errorLog.Fatalln(err)
 	}
-	command = exec.Command("ffmpeg", "-i", "output.mp3", "-c:a", "libvorbis", "-q:a", "4", "output.ogg", "-y")
-	err = command.Run()
-	if err != nil {
-		// app.errorLog.Fatalln(err)
-	}
+	// command = exec.Command("ffmpeg", "-i", "output.mp3", "-c:a", "libvorbis", "-q:a", "4", "output.ogg", "-y")
+	// err = command.Run()
+	// if err != nil {
+	// 	// app.errorLog.Fatalln(err)
+	// }
+}
+
+func (app Application) RemoveTmp() {
+	command := exec.Command("rm", "tmp/output.ogg")
+	command.Run()
 }
 
