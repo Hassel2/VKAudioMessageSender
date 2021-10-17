@@ -12,4 +12,4 @@
 Инструкция по использованию:
 
 В терминале пишем:
-VKAudioMessageSender -p /path/to/audiofile -id 123456 (id получаетля)
+bassboost -p /path/to/audiofile -id 123456 (id получаетля)
