@@ -43,7 +43,7 @@ func main() {
 		return
 	}
 	if (app.token == "") {
-		app.errorLog.Fatalln("No access tokeb found use export TOKEN=<your_token> in terminal to set access token")
+		app.errorLog.Fatalln("No access token found use export TOKEN=<your_token> in terminal to set access token")
 	}
 
 	app.infoLog.Println("Formatting audio")
@@ -68,16 +68,11 @@ func (app Application) FormatAudio() {
 	err := command.Run()
 	if err != nil {
 		// app.errorLog.Fatalln(err)
-	}
-	// command = exec.Command("ffmpeg", "-i", "output.mp3", "-c:a", "libvorbis", "-q:a", "4", "output.ogg", "-y")
-	// err = command.Run()
-	// if err != nil {
-	// 	// app.errorLog.Fatalln(err)
-	// }
+	}	
 }
 
 func (app Application) RemoveTmp() {
-	command := exec.Command("rm", "tmp/output.ogg")
+	command := exec.Command("rm", "/tmp/output.ogg")
 	command.Run()
 }
 
