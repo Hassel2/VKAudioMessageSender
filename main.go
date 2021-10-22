@@ -9,6 +9,10 @@ import (
 	"strings"
 )
 
+const (
+	ouputPath = "/tmp/output.ogg"
+)
+
 type Application struct {
 	token string
 	path string
@@ -64,7 +68,7 @@ func main() {
 }
 
 func (app Application) FormatAudio() {
-	command := exec.Command("ffmpeg", "-i", app.path, "-ac", "1", "/tmp/output.ogg", "-y")
+	command := exec.Command("ffmpeg", "-i", app.path, "-ac", "1", ouputPath, "-y")
 	err := command.Run()
 	if err != nil {
 		// app.errorLog.Fatalln(err)
@@ -72,7 +76,7 @@ func (app Application) FormatAudio() {
 }
 
 func (app Application) RemoveTmp() {
-	command := exec.Command("rm", "/tmp/output.ogg")
+	command := exec.Command("rm", ouputPath)
 	command.Run()
 }
 

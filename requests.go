@@ -60,7 +60,7 @@ func (app Application) AudioUploader(uploadUrl string) (string) {
         app.infoLog.Println("Uploading audiomessage to server")
 
 	app.infoLog.Println("Opening audio file")
-	file, err := os.Open("/tmp/output.ogg")
+	file, err := os.Open(ouputPath)
 	if err != nil {
 		app.errorLog.Fatalln(err)
 	}
@@ -70,7 +70,7 @@ func (app Application) AudioUploader(uploadUrl string) (string) {
 	var requsetBody bytes.Buffer
 	multiPartWriter := multipart.NewWriter(&requsetBody)
 
-	fileWriter, err := multiPartWriter.CreateFormFile("file", "output.ogg")
+	fileWriter, err := multiPartWriter.CreateFormFile("file", file.Name())
 	if err != nil {
 		app.errorLog.Fatalln(err)
 	}
